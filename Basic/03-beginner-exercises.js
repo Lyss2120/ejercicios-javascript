@@ -86,5 +86,17 @@ const bigIntConst = BigInt(87778784545155454878778454554544887454544545454545455
 const bigInt2Const = 445458777878454515545487877845455454488745454454545454545545n;
 
 // 9. A continuación, modifica los valores de las constantes
+//no
 
 // 10. Comenta las líneas que produzcan algún tipo de error al ejecutarse
+
+/* const booleanValueConst = true;
+const numberConst = 7;
+const valueFloatConst = 1.52;
+const stringConst = 'hello';
+const valueNullConst = null;
+const valueUndefinedConst = undefined;
+const symbolConst = Symbol('asymbol');
+const bigIntConst = BigInt(8777878454515545487877845455454488745454454545454545545);
+const bigInt2Const = 445458777878454515545487877845455454488745454454545454545545n;
+ */
