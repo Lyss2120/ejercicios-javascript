@@ -118,7 +118,7 @@ console.log(sumPares(arrayPares));
 const squareNumber = () => {
     let arrCuad = []
     arrayPares.forEach((num) => {
-        arrCuad.push(num **2)
+        arrCuad.push(num ** 2)
     })
     return arrCuad
 }
@@ -126,9 +126,19 @@ console.log(squareNumber([1, 2, 3, 4, 5]));
 
 // 9. Crea una función que reciba una cadena de texto y devuelva la misma cadena con las palabras en orden inverso
 
-const reverseString = (str)=>{
-  let words=  str.split(' ').reverse().join(' ')
+const reverseString = (str) => {
+    let words = str.split(' ').reverse().join(' ')
     return words
 }
-console.log(reverseString('hola como estas'))   
+console.log(reverseString('hola como5 estas'))
 // 10. Crea una función que calcule el factorial de un número dado
+// 
+const factorial = (num) => {
+    let result = num
+    for (let i = num-1; i >= 1; i--) {
+       result = result * (i)
+    }
+
+    return result
+}
+console.log(factorial(4)) 
