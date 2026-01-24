@@ -126,4 +126,9 @@ console.log(squareNumber([1, 2, 3, 4, 5]));
 
 // 9. Crea una función que reciba una cadena de texto y devuelva la misma cadena con las palabras en orden inverso
 
+const reverseString = (str)=>{
+  let words=  str.split(' ').reverse().join(' ')
+    return words
+}
+console.log(reverseString('hola como estas'))   
 // 10. Crea una función que calcule el factorial de un número dado
