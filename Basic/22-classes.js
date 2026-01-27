@@ -92,7 +92,7 @@ let person5 = new PrivatePerson("Brais", 37, "MoureDev", "IBAN123456789")
 
 // No podemos acceder
 // console.log(person5.bank) 
-// person5.bank = "new IBAN123456789" // bank no es #bank
+// person5.bank = "new IBAN123456789" // bank no es #bank // crea una nueva propiedad
 
 console.log(person5)
 
@@ -115,6 +115,9 @@ class GetSetPerson {
     get name() {
         return this.#name
     }
+    // get bank() {
+    //     return this.#bank
+    // }
 
     set bank(bank) {
         this.#bank = bank
@@ -122,12 +125,13 @@ class GetSetPerson {
 
 }
 
-person6 = new GetSetPerson("Brais", 37, "MoureDev", "IBAN123456789")
+let person6 = new GetSetPerson("Brais", 37, "MoureDev", "IBAN123456789")
 
-console.log(person6)
-console.log(person6.name)
+console.log(person6, 'person6')
+console.log(person6.name, 'person6.name') // tiene un getter interno paRA mostrar el name y no modificarlo
 
-person6.bank = "new IBAN123456789"
+// person6.bank = "new IBAN1234567"
+// console.log(person6.bank, 'person6.bank ');
 
 /*
 Clase 38 - Herencia de clases
@@ -184,10 +188,14 @@ myFish.sound()
 // Métodos estáticos
 
 class MathOperations {
-
+    mult(a, b) {
+        return a * b
+    }
     static sum(a, b) {
         return a + b
     }
 }
 
-console.log(MathOperations.sum(5, 10))
+let calc= new MathOperations
+
+console.log(MathOperations.sum(5, 10), calc.mult(5, 10)) // se usa distinto
