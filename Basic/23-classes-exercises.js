@@ -121,3 +121,4 @@ class Car4sale extends Car2 {
 }
 const myCar4sale = new Car4sale('toyota', 'prius', 2015, 'Mario', 50000, 3)
 myCar4sale.run()
+

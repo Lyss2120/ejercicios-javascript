@@ -7,7 +7,7 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=18751
 
 // Produce una excepción
 let myObject
-// console.log(myObject.email)
+console.log(myObject.email)
 
 // Captura de errores
 

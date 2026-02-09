@@ -5,16 +5,113 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=20392
 
 // 1. Captura una excepción utilizando try-catch
 
-// 2. Captura una excepción utilizando try-catch y finally
+// let age = 55
 
+const ageCheck = () => {
+    try {
+        console.log(age);
+    }
+    catch (err) {
+        console.log('ha ocurrido un error: ', err.message);
+    }
+}
+ageCheck()
+
+// 2. Captura ()una excepción utilizando try-catch y finally
+
+function loquesea() {
+    try {
+        console.log(age);
+    }
+    catch (err) {
+        console.log('ha ocurrido un error en loquesea: ', err.message);
+    }
+    finally {
+        console.log('has ingresado tu edad?');
+    }
+}
+loquesea()
 // 3. Lanza una excepción genérica
-
+// let firstName = ''
+// const saludo = () =>{
+// if (firstName ==='') {
+//         throw new Error("no ha ingresado un nombre para saludo")
+//         };
+//         return firstName
+// }
+// saludo()
 // 4. Crea una excepción personalizada
+const salu2 = () => {
+    if (typeof (lastName) !== 'string' || lastName === '') {
+        // throw new TypeError("debe ingresar un string")
+        throw new TypeError("salu2 debe ingresar un string")
+    };
+    return lastName
+}
 
 // 5. Lanza una excepción personalizada
 
+try {
+    console.log(salu2(4));
+    console.log(salu2(''));
+} catch (error) {
+    if (error instanceof TypeError) {
+        console.log('ha ocurrido un error de tipo:', error.message);
+
+    }
+}
+
 // 6. Lanza varias excepciones según una lógica definida
 
+const checkLicense = (license) => {
+    try {
+        if (license === 0) {
+            throw new Error('debe ingresar una licencia superior a 1')
+        }
+        // if (typeof license !== 'number') {
+        //     throw new TypeError('debe ingresar un dato tipo número')
+        // }
+        if (!Number.isInteger(license)) {
+            throw new TypeError('debe ingresar un número entero')
+        }
+        if (license > 4) {
+            throw new RangeError('debe ingresar una licencia entre 1 y 4')
+        }
+        if (!license) {
+            throw new ReferenceError('debe ingresar una licencia')
+        }
+        else {
+            return `licencia tipo ${license} ingresada exitosamente`
+        }
+    }
+    catch (error) {
+        console.log(`se ha producido un ${error.name} en checkLicense: ${error.message}`);
+    }
+}
+console.log(checkLicense('3'))
+
+function mult(num, num2) {
+    if (!Number.isInteger(num) || !Number.isInteger(num2)) {
+        throw new TypeError('debe ingresar números enteros')
+    }
+    if (num === 0 || num2 === 0) {
+        throw new RangeError('la operación mult sólo recibe números mayores a 0')
+    } else return num * num2
+}
+
+try {
+    console.log(mult(5, 5))
+    // console.log(mult(0, 0))
+    console.log(mult(5.5, 5))
+} catch (error) {
+    if (error instanceof RangeError) {
+        console.log(`se ha producido un ${error.name} en mult: ${error.message}`);
+    }
+    if (error instanceof TypeError) {
+        console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
+    }
+
+}
 // 7. Captura varias excepciones en un mismo try-catch
 
 // 8. Crea un bucle que intente transformar a float cada valor y capture y muestre los errores
