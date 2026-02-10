@@ -32,25 +32,26 @@ function loquesea() {
 }
 loquesea()
 // 3. Lanza una excepción genérica
-// let firstName = ''
-// const saludo = () =>{
-// if (firstName ==='') {
-//         throw new Error("no ha ingresado un nombre para saludo")
-//         };
-//         return firstName
-// }
-// saludo()
-// 4. Crea una excepción personalizada
+
+const saludo = (firstName) =>{
+if (firstName ==='') {
+        throw new Error("no ha ingresado un nombre para saludo")
+        };
+        return firstName
+}
+try {
+    saludo('')
+} catch (error) {
+    console.log(error.message);
+    
+}
 const salu2 = () => {
-    if (typeof (lastName) !== 'string' || lastName === '') {
+    if (typeof (firstName) !== 'string' || firstName === '') {
         // throw new TypeError("debe ingresar un string")
         throw new TypeError("salu2 debe ingresar un string")
     };
-    return lastName
+    return firstName
 }
-
-// 5. Lanza una excepción personalizada
-
 try {
     console.log(salu2(4));
     console.log(salu2(''));
@@ -60,6 +61,12 @@ try {
 
     }
 }
+// 4. Crea una excepción personalizada
+
+
+// 5. Lanza una excepción personalizada
+
+
 
 // 6. Lanza varias excepciones según una lógica definida
 
@@ -90,6 +97,9 @@ const checkLicense = (license) => {
 }
 console.log(checkLicense('3'))
 
+
+// 7. Captura varias excepciones en un mismo try-catch
+
 function mult(num, num2) {
     if (!Number.isInteger(num) || !Number.isInteger(num2)) {
         throw new TypeError('debe ingresar números enteros')
@@ -101,7 +111,7 @@ function mult(num, num2) {
 
 try {
     console.log(mult(5, 5))
-    // console.log(mult(0, 0))
+    console.log(mult(0, 0))
     console.log(mult(5.5, 5))
 } catch (error) {
     if (error instanceof RangeError) {
@@ -110,11 +120,21 @@ try {
     if (error instanceof TypeError) {
         console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
     }
-
+    if (error instanceof error) {
+        console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
+    }
 }
-// 7. Captura varias excepciones en un mismo try-catch
+
 
 // 8. Crea un bucle que intente transformar a float cada valor y capture y muestre los errores
+
+const transformToFloat = (num) => {
+    try {
+        return parseFloat(num)
+    } catch (error) {
+        console.log(`se ha producido un error ${error.name} en transformToFloat: ${error.message}`);
+    }
+}
 
 // 9. Crea una función que verifique si un objeto tiene una propiedad específica y lance una excepción personalizada
 
