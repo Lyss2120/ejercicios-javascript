@@ -148,13 +148,28 @@ try {
 
 
 // 8. Crea un bucle que intente transformar a float cada valor y capture y muestre los errores
-
-const transformToFloat = (num) => {
-    try {
-        return parseFloat(num)
-    } catch (error) {
-        console.log(`se ha producido un error ${error.name} en transformToFloat: ${error.message}`);
-    }
+let numbers = [1,2,3]
+const transformToFloat = (arr) => {
+    // console.log(transformToFloat);
+    arr.forEach(element => {
+        if (typeof element !== 'number') {
+            throw new TypeError('debe ingresar datos tipo number')
+        }
+        if (element === '') {
+            throw new TypeError('debe ingresar datos no vacios')
+        } 
+        else {
+            console.log(element.toFixed(1));
+            arr.splice(arr.indexOf(element), 1, element.toFixed(1))
+        }
+    }); console.log(arr);
+    
+}
+try {
+    console.log(transformToFloat(numbers));
+}
+catch (error) {
+    console.log(`se ha producido un error ${error.name} en transformToFloat: ${error.message}`);
 }
 
 // 9. Crea una función que verifique si un objeto tiene una propiedad específica y lance una excepción personalizada
@@ -175,7 +190,23 @@ class noPropError extends Error {
 
 try { checkProp(myObj) }
 catch (err) {
-    console.log('error personalizado:',err.message);
+    console.log('error personalizado:', err.message);
 }
 
 // 10. Crea una función que realice reintentos en caso de error hasta un máximo de 10
+const getPerson = (data) => {
+    try {
+        console.log(data.title);
+    } catch (error) {
+        console.log(`se ha producido un error ${error.name} en getPerson: ${error.message}`);
+    }
+}
+const fetchPerson = (url) => {
+    fetch(url)
+        .then(response => response.json())
+        .then(data => getPerson(data)
+            //   , getPerson(data)
+        )
+}
+fetchPerson('https://jsonplaceholder.typicode.com/todos/1')
+
