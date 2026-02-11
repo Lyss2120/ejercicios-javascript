@@ -51,7 +51,7 @@ const salu2 = (firstName, lastName) => {
         throw new TypeError("salu2 debe ingresar un string")
     }
     if (firstName.length >= 10 || lastName.length >= 10) {
-        throw new myError('debe ingresar un nombre y apellido de menos de 10 caracteres')
+        throw new myError('debe ingresar un nombre y apellido de menos de 10 caracteres', firstName, lastName)
     }
     return `Bienvenido ${firstName} ${lastName}`
 }
@@ -72,18 +72,20 @@ class myError extends Error {
         this.firstName = firstName
         this.lastName = lastName
     }
-        identifyUser() {
-        console.log(this.firstName, 'de' , this.lastName);
+    identifyUser() {
+        console.log('el usuario ingresado es: ', this.firstName, this.lastName);
     }
 }
 
 // 5. Lanza una excepción personalizada
 
 try {
-    console.log(salu2('Marianelozzz', 'Gonzalezzz'));
+    console.log(salu2('Mario', 'Gonzalez'));
+    console.log(salu2('Marianellaaaa', 'Gonzalezzzzzz'));
+
 } catch (error) {
     console.log('se ha producido un error personalizado: ', error.message);
-    // error.identifyUser(); ??? no funciona da undefined
+    error.identifyUser()
 }
 
 
@@ -156,5 +158,24 @@ const transformToFloat = (num) => {
 }
 
 // 9. Crea una función que verifique si un objeto tiene una propiedad específica y lance una excepción personalizada
+
+const myObj = { name: 'mario', lastName: 'gonzalez' }
+const checkProp = (obj) => {
+    if (obj.age) {
+        return obj.age
+    } else { throw new noPropError('No ha ingresado la edad del usuario') }
+
+}
+
+class noPropError extends Error {
+    constructor(message) {
+        super(message)
+    }
+}
+
+try { checkProp(myObj) }
+catch (err) {
+    console.log('error personalizado:',err.message);
+}
 
 // 10. Crea una función que realice reintentos en caso de error hasta un máximo de 10
