@@ -33,39 +33,58 @@ function loquesea() {
 loquesea()
 // 3. Lanza una excepción genérica
 
-const saludo = (firstName) =>{
-if (firstName ==='') {
+const saludo = (firstName) => {
+    if (firstName === '') {
         throw new Error("no ha ingresado un nombre para saludo")
-        };
-        return firstName
+    };
+    return firstName
 }
 try {
     saludo('')
 } catch (error) {
     console.log(error.message);
-    
+
 }
-const salu2 = () => {
-    if (typeof (firstName) !== 'string' || firstName === '') {
+const salu2 = (firstName, lastName) => {
+    if (typeof (firstName) !== 'string' || typeof (lastName) !== 'string') {
         // throw new TypeError("debe ingresar un string")
         throw new TypeError("salu2 debe ingresar un string")
-    };
-    return firstName
-}
-try {
-    console.log(salu2(4));
-    console.log(salu2(''));
-} catch (error) {
-    if (error instanceof TypeError) {
-        console.log('ha ocurrido un error de tipo:', error.message);
-
     }
+    if (firstName.length >= 10 || lastName.length >= 10) {
+        throw new myError('debe ingresar un nombre y apellido de menos de 10 caracteres')
+    }
+    return `Bienvenido ${firstName} ${lastName}`
 }
+
+// try {
+//     console.log(salu2(4,7));
+// } catch (error) {
+//     if (error instanceof TypeError) {
+//         console.log('ha ocurrido un error de tipo:', error.message);
+
+//     }
+// }
 // 4. Crea una excepción personalizada
 
+class myError extends Error {
+    constructor(message, firstName, lastName) {
+        super(message)
+        this.firstName = firstName
+        this.lastName = lastName
+    }
+        identifyUser() {
+        console.log(this.firstName, 'de' , this.lastName);
+    }
+}
 
 // 5. Lanza una excepción personalizada
 
+try {
+    console.log(salu2('Marianelozzz', 'Gonzalezzz'));
+} catch (error) {
+    console.log('se ha producido un error personalizado: ', error.message);
+    // error.identifyUser(); ??? no funciona da undefined
+}
 
 
 // 6. Lanza varias excepciones según una lógica definida
@@ -120,9 +139,9 @@ try {
     if (error instanceof TypeError) {
         console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
     }
-    if (error instanceof error) {
-        console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
-    }
+    // if (error instanceof error) {
+    //     console.log(`se ha producido un error ${error.name} en mult: ${error.message}`);
+    // }
 }
 
 
