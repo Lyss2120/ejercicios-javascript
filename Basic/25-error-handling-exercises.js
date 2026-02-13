@@ -195,10 +195,10 @@ Vídeo: https://youtu.be/1glVfFxj8a4?t=20392
 // }
 
 // 10. Crea una función que realice reintentos en caso de error hasta un máximo de 10
-const getPerson = async (url) => {
+const getTarea = async (url) => {
     let count = 0;
-    let person = null
-    const fetchPerson = async  (url) => {
+    let tarea = null
+    const fetchTarea = async  (url) => {
         count++;
         try {
             const response = await fetch(url);
@@ -207,20 +207,20 @@ const getPerson = async (url) => {
             return data;
         }
         catch (error) {
-            console.log(`se ha producido un error ${error.name} en getPerson: ${error.message}`);
+            console.log(`se ha producido un error ${error.name} en getTarea: ${error.message}`);
             if (count <= 10) {
-               return await fetchPerson(url)
+               return await fetchTarea(url)
             } else {
                 console.log('se ha excedido el numero de reintentos');
                 return null
             }
         }
     };
-    person = await fetchPerson(url) //aca para dejar que se obtengan los datos antes de setear la persona
-    return `la persona es: ${JSON.stringify(person)}`
+    tarea = await fetchTarea(url) //aca para dejar que se obtengan los datos antes de setear la tarea
+    return tarea ? `la tareaa es: ${JSON.stringify(tarea)}`: 'no se pudo obtener la tarea'
 }
- // Para probarlo (ya que getPerson devuelve una promesa):
-getPerson('https://jsonplaceholder.typicode.com/todos/1')
+ // Para probarlo (ya que getTarea devuelve una promesa):
+getTarea('https://jsonplaceholder.typicode.com/todos/1.')
     .then(resultado => console.log(resultado));
 
 
